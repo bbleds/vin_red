@@ -1,11 +1,6 @@
 const React = require('react');
 
 const AddTask = React.createClass({
-  getInitialState: () => {
-    // set our inital app state
-    return {
-    }
-  },
   // this will pass the task to our parent component
   addTask: function(e){
     e.preventDefault();

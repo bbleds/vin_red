@@ -1,6 +1,7 @@
 const React = require('react');
 const TaskList = require('TaskList');
 const AddTask = require('AddTask');
+const SearchTasks = require('SearchTasks');
 
 const AppBase = React.createClass({
   getInitialState: () => {
@@ -15,11 +16,20 @@ const AppBase = React.createClass({
           id: 2,
           text : 'Do something else'
         }
-      ]
+      ],
+      showCompletedTasks: false,
+      searchText: ""
     }
   },
   handleAddTask: (taskText) => {
     console.log('new task', taskText);
+  },
+  handleSearchTask: function(searchText, showCompletedTasks){
+
+    this.setState({
+      showCompletedTasks: showCompletedTasks,
+      searchText: searchText
+    });
   },
   render: function(){
     // set tasks to pass to child components
@@ -27,6 +37,7 @@ const AppBase = React.createClass({
 
     return (
       <div>
+        <SearchTasks search={this.handleSearchTask} />
         <TaskList tasks={tasks}/>
         <AddTask addTask={this.handleAddTask}/>
       </div>
