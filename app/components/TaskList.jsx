@@ -1,7 +1,7 @@
 //  This component will build our task list
 
 const React = require('react');
-const Task = require('task');
+const Task = require('Task');
 
 const TaskList = React.createClass({
   getInitialState: () => {
