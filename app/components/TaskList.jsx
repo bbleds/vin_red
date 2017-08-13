@@ -4,11 +4,6 @@ const React = require('react');
 const Task = require('Task');
 
 const TaskList = React.createClass({
-  getInitialState: () => {
-    // set our inital app state
-    return {
-    }
-  },
   // build jsx for each task
   renderTasks: (tasks)=>{
     return tasks.map((task)=>{
