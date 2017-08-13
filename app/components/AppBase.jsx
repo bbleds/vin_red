@@ -2,27 +2,29 @@ const React = require('react');
 const TaskList = require('TaskList');
 const AddTask = require('AddTask');
 const SearchTasks = require('SearchTasks');
+const uuid = require('node-uuid');
 
 const AppBase = React.createClass({
   getInitialState: () => {
     // set our inital app state
     return {
-      tasks: [
-        {
-          id: 1,
-          text : 'Do something'
-        },
-        {
-          id: 2,
-          text : 'Do something else'
-        }
-      ],
+      tasks: [],
       showCompletedTasks: false,
       searchText: ""
     }
   },
-  handleAddTask: (taskText) => {
-    console.log('new task', taskText);
+  handleAddTask: function(taskText){
+    this.setState({
+      tasks: [
+        // combine previous tasks
+        ...this.state.tasks,
+        // append new tasks
+        {
+          id : uuid(),
+          text: taskText
+        }
+      ]
+    });
   },
   handleSearchTask: function(searchText, showCompletedTasks){
 
