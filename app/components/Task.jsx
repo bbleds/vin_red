@@ -7,10 +7,10 @@ const Task = React.createClass({
     }
   },
   render: function(){
-
+    let {taskData} = this.props;
     return (
       <div>
-        {this.props.taskData.text}
+        {taskData.id} : {taskData.text}
       </div>
     )
   }
