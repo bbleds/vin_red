@@ -11,8 +11,8 @@ module.exports = {
       return true;
     }
 
-    // fail - don't rely on returning undefined
-    return false;
+    // fail - don't rely on undefined
+    return null;
   },
 
   // Used to retrieve tasks
@@ -22,8 +22,8 @@ module.exports = {
     try {
       tasks = JSON.parse(localStorage.getItem('tasks'));
     } catch (e){
-      // return error if applicable
-      return e;
+      // return empty array if there was an error
+      return [];
     }
 
     // run final validation to check that "tasks" is an array
