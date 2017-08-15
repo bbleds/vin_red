@@ -1,6 +1,9 @@
 //  This component will build our task list
 
+// load 3rd party deps
 const React = require('react');
+
+// load our components
 const Task = require('Task');
 
 const TaskList = React.createClass({

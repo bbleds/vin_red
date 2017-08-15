@@ -1,17 +1,28 @@
+// load 3rd party deps
 const React = require('react');
+const uuid = require('node-uuid');
+
+// load our components
 const TaskList = require('TaskList');
 const AddTask = require('AddTask');
 const SearchTasks = require('SearchTasks');
-const uuid = require('node-uuid');
+const TaskApi = require('TaskApi');
 
 const AppBase = React.createClass({
   getInitialState: () => {
+    // get existing tasks
+    let tasks = TaskApi.getTasks();
+
     // set our inital app state
     return {
-      tasks: [],
+      tasks: tasks,
       showCompletedTasks: false,
       searchText: ""
     }
+  },
+  componentDidUpdate: function(){
+    // store existing tasks
+    TaskApi.setTasks(this.state.tasks);
   },
   handleAddTask: function(taskText){
     this.setState({
@@ -49,6 +60,7 @@ const AppBase = React.createClass({
     });
   },
   render: function(){
+
     // set tasks to pass to child components
     let {tasks} = this.state;
 
