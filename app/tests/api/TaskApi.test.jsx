@@ -30,9 +30,10 @@ describe('TaskApi',()=>{
 
   describe('TaskApi.getTasks',()=>{
     it('Should get tasks from local storage', () =>{
-      localStorage.setItem('tasks','[]');
+      let tasks = [{id:1,text:'testing',completed:true}];
+      localStorage.setItem('tasks', JSON.stringify(tasks));
       let resp = TaskApi.getTasks();
-      expect(resp).toEqual([]);
+      expect(resp).toEqual(tasks);
     });
 
     it('Should return an empty array if tasks are not valid json', () =>{
