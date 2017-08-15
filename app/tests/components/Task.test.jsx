@@ -1,5 +1,5 @@
 const React = require('react');
-const ReactDom = require('react-dom');
+const ReactDOM = require('react-dom');
 const TestUtils = require('react-addons-test-utils');
 const expect = require('expect');
 const $ = require('jquery');
@@ -10,5 +10,26 @@ const Task = require('Task');
 describe('Task', () => {
   it('Should exist', () =>{
     expect(Task).toExist();
+  });
+
+  it('Should call "markTaskComplete" when "completed" input is clicked', () =>{
+    let testTaskId = 19;
+    let taskData = {
+      id: testTaskId,
+      text: 'testing',
+      completed: false
+    }
+
+    let spy = expect.createSpy();
+    // create task component with props defined in our variable (each key value pair is handled via the spread operator)
+    let task = TestUtils.renderIntoDocument(<Task key={taskData.id} taskData={taskData} handleCompleteTask={spy} />);
+
+    // grab our radio button input
+    let $elem = $(ReactDOM.findDOMNode(task)).find('.completed-input')[0];
+
+    // simulate a click
+    TestUtils.Simulate.click($elem);
+
+    expect(spy).toHaveBeenCalledWith(testTaskId);
   });
 });

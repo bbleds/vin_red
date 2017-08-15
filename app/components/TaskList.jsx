@@ -5,9 +5,9 @@ const Task = require('Task');
 
 const TaskList = React.createClass({
   // build jsx for each task
-  renderTasks: (tasks)=>{
+  renderTasks: function(tasks){
     return tasks.map((task)=>{
-      return (<Task key={task.id} taskData={task}/>);
+      return (<Task key={task.id} taskData={task} handleCompleteTask={this.props.handleCompleteTask} />);
     });
   },
   render: function(){
