@@ -28,5 +28,9 @@ module.exports = {
 
     // run final validation to check that "tasks" is an array
     return (Array.isArray(tasks)) ? tasks : [];
+  },
+
+  filterTasks: (tasks, showCompleted, searchTerm) => {
+
   }
 };
