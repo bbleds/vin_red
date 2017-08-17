@@ -1,6 +1,7 @@
 // load 3rd party deps
 const React = require('react');
 const uuid = require('node-uuid');
+const moment = require('moment');
 
 // load our components
 const TaskList = require('TaskList');
@@ -33,7 +34,8 @@ const AppBase = React.createClass({
         {
           id : uuid(),
           text: taskText,
-          completed: false
+          completed: false,
+          createdOn: moment().unix()
         }
       ]
     });
@@ -59,7 +61,6 @@ const AppBase = React.createClass({
     });
   },
   render: function(){
-
     // pull variables from state
     let {tasks, showCompletedTasks, searchText} = this.state;
 
