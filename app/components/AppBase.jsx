@@ -53,7 +53,6 @@ const AppBase = React.createClass({
     });
   },
   handleSearchTask: function(searchText, showCompletedTasks){
-
     this.setState({
       showCompletedTasks: showCompletedTasks,
       searchText: searchText
@@ -61,13 +60,16 @@ const AppBase = React.createClass({
   },
   render: function(){
 
-    // set tasks to pass to child components
-    let {tasks} = this.state;
+    // pull variables from state
+    let {tasks, showCompletedTasks, searchText} = this.state;
+
+    // filter tasks by user-entered criteria
+    let filteredTasks = TaskApi.filterTasks(tasks, showCompletedTasks, searchText);
 
     return (
       <div>
         <SearchTasks search={this.handleSearchTask} />
-        <TaskList tasks={tasks} handleCompleteTask={this.handleCompleteTask}/>
+        <TaskList tasks={filteredTasks} handleCompleteTask={this.handleCompleteTask}/>
         <AddTask addTask={this.handleAddTask}/>
       </div>
     )

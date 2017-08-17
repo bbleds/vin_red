@@ -30,7 +30,28 @@ module.exports = {
     return (Array.isArray(tasks)) ? tasks : [];
   },
 
-  filterTasks: (tasks, showCompleted, searchTerm) => {
+  // returns existing tasks based on search term
+  filterTasks: function(tasks, showCompleted, searchTerm){
+    let filteredTasks = tasks;
 
+    // filter by showCompleted and search terms
+    filteredTasks = filteredTasks.filter((item)=>{
+      if((!item.completed || showCompleted) && item.text.toLowerCase().match(searchTerm.toLowerCase())){
+        return true;
+      }
+    });
+
+    // sort to show incomplete tasks at top
+    filteredTasks.sort((a,b)=>{
+      if(!a.completed && b.completed){
+        return -1;
+      } else if(a.completed && !b.completed){
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    return filteredTasks;
   }
 };
