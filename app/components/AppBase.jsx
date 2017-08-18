@@ -35,7 +35,7 @@ const AppBase = React.createClass({
           id : uuid(),
           text: taskText,
           completed: false,
-          createdOn: moment().unix()
+          dateModified: moment().unix()
         }
       ]
     });
@@ -45,6 +45,7 @@ const AppBase = React.createClass({
       // set "completed" status on task we passed back to the opposite "completed" status
       if(task.id == taskId){
         task.completed = !task.completed;
+        task.dateModified = moment().unix();
       }
 
       return task;
