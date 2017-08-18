@@ -2,19 +2,51 @@
   border-bottom: 1px solid $light_border;
   border-top: 1px solid $light_border;
   cursor: pointer;
-  padding: 20px 20px;
 
   .empty{
     text-align: center;
     width: 100%;
     margin-bottom: 5px;
     color: $faded_text;
+    padding: 20px;
+  }
+
+  .task {
+    padding: 10px 20px;
+    position: relative;
+    transition-duration: .6s;
+
+    &:hover{
+      background-color: $hightlight;
+    }
+
+    .completed {
+      text-decoration: line-through;
+    }
   }
 
   .task-output {
     color: $grey;
+    display: block;
     font-size: 1em;
+    font-weight: bold;
     padding-left: 12px;
+  }
+
+  .task-details {
+    // background-color: red;
+    display: inline-block;
+    width: 50%;
+    vertical-align: text-top;
+    padding: 5px;
+    position: relative;
+  }
+
+  .task-input {
+    display: inline-block;
+    position: relative;
+    top: 20px;
+    vertical-align: middle;
   }
 
   .time-output {

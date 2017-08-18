@@ -16,12 +16,19 @@ const Task = React.createClass({
   render: function(){
     let {taskData, handleCompleteTask} = this.props;
     let timeOutput = this.setDateMessage(taskData);
+
+    let taskDetailsClass = 'task-details';
+    taskDetailsClass += (taskData.completed) ? ' completed': '';
     return (
-      <div>
+      <div className='task'>
         <div onClick={this.markTaskComplete}>
-            <input className="completed-input" type="checkbox" ref="markComplete" checked={taskData.completed} />
-            <span className="task-output">{taskData.text}</span>
-            <span className="time-output"> {timeOutput}</span>
+            <div className="task-input">
+              <input className="completed-input" type="checkbox" ref="markComplete" checked={taskData.completed} />
+            </div>
+            <div className={taskDetailsClass}>
+              <span className="task-output">{taskData.text}</span>
+              <span className="time-output"> {timeOutput}</span>
+            </div>
         </div>
       </div>
     )
