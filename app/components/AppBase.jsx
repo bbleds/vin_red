@@ -68,6 +68,9 @@ const AppBase = React.createClass({
     // filter tasks by user-entered criteria
     let filteredTasks = TaskApi.filterTasks(tasks, showCompletedTasks, searchText);
 
+    // set empty message if no tasks available
+    let taskOutput = (!filteredTasks.length) ? (<div className='task-list'><p className="empty">No Current Tasks</p></div>) : <TaskList tasks={filteredTasks} handleCompleteTask={this.handleCompleteTask}/>;
+
     return (
       <div>
         <h1 className="page-title">Task Manager</h1>
@@ -75,7 +78,7 @@ const AppBase = React.createClass({
           <div className="column small-centered small-11 medium-6 large-5">
             <div className="container">
               <SearchTasks search={this.handleSearchTask} />
-              <TaskList tasks={filteredTasks} handleCompleteTask={this.handleCompleteTask}/>
+              {taskOutput}
               <AddTask addTask={this.handleAddTask}/>
             </div>
           </div>
