@@ -19,8 +19,9 @@ const Task = React.createClass({
     return (
       <div>
         <div onClick={this.markTaskComplete}>
-          <input className="completed-input" type="checkbox" ref="markComplete" checked={taskData.completed} /> {taskData.text}
-          <span> {timeOutput}</span>
+            <input className="completed-input" type="checkbox" ref="markComplete" checked={taskData.completed} />
+            <span className="task-output">{taskData.text}</span>
+            <span className="time-output"> {timeOutput}</span>
         </div>
       </div>
     )

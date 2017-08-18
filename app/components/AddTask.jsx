@@ -15,9 +15,9 @@ const AddTask = React.createClass({
   render: function(){
 
     return (
-      <div>
+      <div className="container__footer">
         <input type='text' ref="taskInput" placeholder='Task' />
-        <a href="#" onClick={this.addTask} className="button expand">Save Task</a>
+        <a href="#" onClick={this.addTask} className="button expanded">Save Task</a>
       </div>
     )
   }

@@ -70,9 +70,16 @@ const AppBase = React.createClass({
 
     return (
       <div>
-        <SearchTasks search={this.handleSearchTask} />
-        <TaskList tasks={filteredTasks} handleCompleteTask={this.handleCompleteTask}/>
-        <AddTask addTask={this.handleAddTask}/>
+        <h1 className="page-title">Task Manager</h1>
+        <div className="row">
+          <div className="column small-centered small-11 medium-6 large-5">
+            <div className="container">
+              <SearchTasks search={this.handleSearchTask} />
+              <TaskList tasks={filteredTasks} handleCompleteTask={this.handleCompleteTask}/>
+              <AddTask addTask={this.handleAddTask}/>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

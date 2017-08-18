@@ -13,7 +13,7 @@ const SearchTasks = React.createClass({
   render: function(){
 
     return (
-      <div>
+      <div className="container__header">
         <div className='input-wrapper'>
           <input type='search' onChange={this.searchTasks} ref="searchInput" placeholder='Search Tasks' />
         </div>

@@ -16,7 +16,7 @@ const TaskList = React.createClass({
   render: function(){
     let taskContent = this.renderTasks(this.props.tasks);
     return (
-      <div>
+      <div className="task-list">
         {taskContent}
       </div>
     )

@@ -1,0 +1,23 @@
+.task-list {
+  border-bottom: 1px solid $light_border;
+  border-top: 1px solid $light_border;
+  cursor: pointer;
+  padding: 15px 20px;
+
+  label {
+    padding-top: 4px;
+  }
+
+  .task-output {
+    color: $grey;
+    font-size: 1em;
+    padding-left: 12px;
+  }
+
+  .time-output {
+    color: $faded_text;
+    font-size: .8em;
+    padding-left: 10px;
+  }
+
+}
