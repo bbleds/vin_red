@@ -47,6 +47,10 @@
     position: relative;
     top: 20px;
     vertical-align: middle;
+
+    .completed-input{
+      cursor: pointer;
+    }
   }
 
   .time-output {
