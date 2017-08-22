@@ -26,9 +26,9 @@ export let toggleCompletedTasks = () => {
 }
 
 // action generator for toggling completed status of a task
-export let toggleComplete = (completed) => {
+export let toggleTask = (completed) => {
   return {
-    type: "TOGGLE_COMPLETE_TASK",
+    type: "TOGGLE_TASK",
     completed: completed
   }
 }

@@ -37,13 +37,13 @@ describe('App actions', ()=>{
       expect(actionResp).toEqual(action);
     });
 
-    it('Should generate an TOGGLE_COMPLETE_TASK action', () => {
+    it('Should generate an TOGGLE_TASK action', () => {
       let action = {
-        type: "TOGGLE_COMPLETE_TASK",
+        type: "TOGGLE_TASK",
         completed : false
       };
 
-      let actionResp = actions.toggleComplete(false);
+      let actionResp = actions.toggleTask(false);
       expect(actionResp).toEqual(action);
     });
   });
