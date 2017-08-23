@@ -1,11 +1,12 @@
 const React = require('react');
-
+const {connect} = require('react-redux');
 const moment = require('moment');
+const actions = require('actions');
 
 const Task = React.createClass({
   // this method will pass the completed tasks to app component
   markTaskComplete: function(){
-    this.props.handleCompleteTask(this.props.taskData.id)
+    this.props.dispatch(actions.toggleTask(this.props.taskData.id));
   },
   // set and format date from timestamp for output
   setDateMessage: function(task){
@@ -14,7 +15,7 @@ const Task = React.createClass({
     return `${message} ${time}`;
   },
   render: function(){
-    let {taskData, handleCompleteTask} = this.props;
+    let {taskData, dispatch} = this.props;
     let timeOutput = this.setDateMessage(taskData);
 
     let taskDetailsClass = 'task-details';
@@ -35,4 +36,4 @@ const Task = React.createClass({
   }
 });
 
-module.exports = Task;
+module.exports = connect()(Task);

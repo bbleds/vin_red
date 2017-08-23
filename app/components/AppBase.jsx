@@ -40,21 +40,21 @@ const AppBase = React.createClass({
       ]
     });
   },
-  handleCompleteTask: function(taskId){
-    let tasks = this.state.tasks.map((task)=>{
-      // set "completed" status on task we passed back to the opposite "completed" status
-      if(task.id == taskId){
-        task.completed = !task.completed;
-        task.dateModified = moment().unix();
-      }
-
-      return task;
-    });
-
-    this.setState({
-      tasks: tasks
-    });
-  },
+  // handleCompleteTask: function(taskId){
+  //   let tasks = this.state.tasks.map((task)=>{
+  //     // set "completed" status on task we passed back to the opposite "completed" status
+  //     if(task.id == taskId){
+  //       task.completed = !task.completed;
+  //       task.dateModified = moment().unix();
+  //     }
+  //
+  //     return task;
+  //   });
+  //
+  //   this.setState({
+  //     tasks: tasks
+  //   });
+  // },
   handleSearchTask: function(searchText, showCompletedTasks){
     this.setState({
       showCompletedTasks: showCompletedTasks,
@@ -69,7 +69,7 @@ const AppBase = React.createClass({
     let filteredTasks = TaskApi.filterTasks(tasks, showCompletedTasks, searchText);
 
     // set empty message if no tasks available
-    let taskOutput = (!filteredTasks.length) ? (<div className='task-list'><p className="empty">No Current Tasks</p></div>) : <TaskList tasks={filteredTasks} handleCompleteTask={this.handleCompleteTask}/>;
+    let taskOutput = (!filteredTasks.length) ? (<div className='task-list'><p className="empty">No Current Tasks</p></div>) : <TaskList/>;
 
     return (
       <div>
