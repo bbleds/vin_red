@@ -28,4 +28,25 @@ describe("Reducers", () => {
       expect(resp).toEqual(true);
     })
   });
+
+  describe("Add task reducer", () => {
+    it('Should add new task', () => {
+      let action = {
+        type: 'ADD_TASK',
+        taskText: 'testing'
+      };
+      let resp = reducers.tasksReducer(freeze([]), freeze(action));
+      expect(resp[0].text).toEqual(action.text);
+      expect(resp.length).toEqual(1);
+    });
+
+    it('Should toggle completed status of task', () => {
+      let action = {
+        type: "TOGGLE_TASK",
+        taskId: 1
+      };
+      let resp = reducers.tasksReducer(freeze([{id:1, completed: false}]), freeze(action));
+      expect(resp[0].completed).toEqual(true);
+    });
+  });
 });
