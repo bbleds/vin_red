@@ -1,16 +1,18 @@
 const React = require('react');
+const actions = require('actions');
+const {connect} = require('react-redux'); // this is the connecting point to react-redux "Provider" seen in app.jsx
 
 const AddTask = React.createClass({
   // this will pass the task to our parent component
   addTask: function(e){
     e.preventDefault();
-    let value = this.refs.taskInput.value;
+    let value = this.refs.taskInput.value.trim();
 
     // check that we actually have a value
     let valid = (!value.trim()) ? false: true;
 
-    // pass value to parent component and clear input
-    return (valid) ? (this.props.addTask(value), this.refs.taskInput.value="") : this.refs.taskInput.focus();
+    // update our store and clear input
+    (valid) ? (this.props.dispatch(actions.addTask(value)), this.refs.taskInput.value="") : this.refs.taskInput.focus();
   },
   render: function(){
 
@@ -23,4 +25,10 @@ const AddTask = React.createClass({
   }
 });
 
-module.exports = AddTask;
+module.exports = connect(
+  (state) => {
+    return {
+      tasks: state.tasks
+    }
+  }
+)(AddTask);

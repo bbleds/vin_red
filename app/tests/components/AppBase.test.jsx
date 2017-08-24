@@ -1,63 +1,66 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const {Provider} = require('react-redux');
 const TestUtils = require('react-addons-test-utils');
 const expect = require('expect');
 const $ = require('jquery');
 const moment = require('moment');
 
+const configureStore = require('configureStore');
+
+const actions = require('actions');
+
 // load component we are going to test
 const AppBase = require('AppBase');
+import TaskList from 'TaskList';
+const SearchTasks = require('SearchTasks');
+const AddTask = require('AddTask');
 
 describe('AppBase', () => {
   it('Should exist', () =>{
     expect(AppBase).toExist();
   });
 
-  it('Should append a new task to existing task list', () =>{
-    let taskText = 'testing';
-    let taskApp = TestUtils.renderIntoDocument(<AppBase/>);
+  it('Should render todo list',() => {
+    const store = configureStore.configure();
+    let provider = TestUtils.renderIntoDocument(
+      <Provider store={store}>
+        <AppBase/>
+      </Provider>
+    );
 
-    taskApp.setState({tasks:[]});
-    taskApp.handleAddTask(taskText);
+    let appBase = TestUtils.scryRenderedComponentsWithType(provider, AppBase)[0];
+    let taskList = TestUtils.scryRenderedComponentsWithType(appBase, TaskList);
 
-    expect(taskApp.state.tasks.length).toEqual(1);
+    expect(taskList.length).toEqual(0);
   });
 
-  it('Should save the current timestamp when a task is added', () =>{
-    let taskText = 'testing';
-    let taskApp = TestUtils.renderIntoDocument(<AppBase/>);
-    taskApp.handleAddTask(taskText);
+  it('Should render searchTask component',() => {
+    const store = configureStore.configure();
+    let provider = TestUtils.renderIntoDocument(
+      <Provider store={store}>
+        <AppBase/>
+      </Provider>
+    );
 
-    expect(taskApp.state.tasks[0].dateModified).toEqual(moment().unix());
+    let appBase = TestUtils.scryRenderedComponentsWithType(provider, AppBase)[0];
+    let searchTasks = TestUtils.scryRenderedComponentsWithType(appBase, SearchTasks);
+
+    expect(searchTasks.length).toEqual(1);
   });
 
-  it('Should toggle completed value when handleCompleteTask is called', () =>{
-    let taskText = 'testing';
-    let taskApp = TestUtils.renderIntoDocument(<AppBase/>);
-    let taskTestId = 11;
-    let testTask = {
-      'id':taskTestId,
-      'text':taskText,
-      'completed':false
-    };
+  it('Should render addTask component',() => {
+    const store = configureStore.configure();
+    let provider = TestUtils.renderIntoDocument(
+      <Provider store={store}>
+        <AppBase/>
+      </Provider>
+    );
 
-    // set up a test task
-    taskApp.setState({tasks:[testTask]});
+    let appBase = TestUtils.scryRenderedComponentsWithType(provider, AppBase)[0];
+    let addTask = TestUtils.scryRenderedComponentsWithType(appBase, AddTask);
 
-    // check that "completed" value false to start
-    expect(taskApp.state.tasks[0].completed).toBe(false);
-
-    // simulate a "task completed" action
-    taskApp.handleCompleteTask(taskTestId);
-
-    // check that "completed" value was changed
-    expect(taskApp.state.tasks[0].completed).toBe(true);
+    expect(addTask.length).toEqual(1);
   });
 
-  it('Should save the current timestamp when a task is completed', () =>{
-    let taskApp = TestUtils.renderIntoDocument(<AppBase/>);
-    taskApp.setState({tasks:[{id:19,text:'testing',completed:false, dateModified: moment().unix()}]});
-    taskApp.handleCompleteTask(19);
-    expect(taskApp.state.tasks[0].dateModified).toEqual(moment().unix());
-  });
 });

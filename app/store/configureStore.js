@@ -3,7 +3,7 @@ const redux = require('redux');
 // load in reducers
 const {searchTextReducer, showCompletedReducer, tasksReducer} = require('reducers');
 
-export let configure = () => {
+export let configure = (initialState={}) => {
   // make our final reducer from combining all previous reducers
   let reducer = redux.combineReducers({
     searchText: searchTextReducer,
@@ -11,7 +11,7 @@ export let configure = () => {
     tasks: tasksReducer
   });
 
-  return redux.createStore(reducer, redux.compose(
+  return redux.createStore(reducer, initialState, redux.compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   );

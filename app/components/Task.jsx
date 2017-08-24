@@ -3,7 +3,7 @@ const {connect} = require('react-redux');
 const moment = require('moment');
 const actions = require('actions');
 
-const Task = React.createClass({
+export const Task = React.createClass({
   // this method will pass the completed tasks to app component
   markTaskComplete: function(){
     this.props.dispatch(actions.toggleTask(this.props.taskData.id));
@@ -36,4 +36,4 @@ const Task = React.createClass({
   }
 });
 
-module.exports = connect()(Task);
+export default connect()(Task);

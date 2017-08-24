@@ -4,7 +4,7 @@ const uuid = require('node-uuid');
 const moment = require('moment');
 
 // load our components
-const TaskList = require('TaskList');
+import TaskList from 'TaskList';
 const AddTask = require('AddTask');
 const SearchTasks = require('SearchTasks');
 const TaskApi = require('TaskApi');
@@ -25,21 +25,21 @@ const AppBase = React.createClass({
     // store existing tasks
     TaskApi.setTasks(this.state.tasks);
   },
-  handleAddTask: function(taskText){
-    this.setState({
-      tasks: [
-        // combine previous tasks
-        ...this.state.tasks,
-        // append new tasks
-        {
-          id : uuid(),
-          text: taskText,
-          completed: false,
-          dateModified: moment().unix()
-        }
-      ]
-    });
-  },
+  // handleAddTask: function(taskText){
+  //   this.setState({
+  //     tasks: [
+  //       // combine previous tasks
+  //       ...this.state.tasks,
+  //       // append new tasks
+  //       {
+  //         id : uuid(),
+  //         text: taskText,
+  //         completed: false,
+  //         dateModified: moment().unix()
+  //       }
+  //     ]
+  //   });
+  // },
   // handleCompleteTask: function(taskId){
   //   let tasks = this.state.tasks.map((task)=>{
   //     // set "completed" status on task we passed back to the opposite "completed" status
@@ -55,12 +55,12 @@ const AppBase = React.createClass({
   //     tasks: tasks
   //   });
   // },
-  handleSearchTask: function(searchText, showCompletedTasks){
-    this.setState({
-      showCompletedTasks: showCompletedTasks,
-      searchText: searchText
-    });
-  },
+  // handleSearchTask: function(searchText, showCompletedTasks){
+  //   this.setState({
+  //     showCompletedTasks: showCompletedTasks,
+  //     searchText: searchText
+  //   });
+  // },
   render: function(){
     // pull variables from state
     let {tasks, showCompletedTasks, searchText} = this.state;
@@ -77,9 +77,9 @@ const AppBase = React.createClass({
         <div className="row">
           <div className="column small-centered small-11 medium-6 large-5">
             <div className="container">
-              <SearchTasks search={this.handleSearchTask} />
+              <SearchTasks />
               {taskOutput}
-              <AddTask addTask={this.handleAddTask}/>
+              <AddTask/>
             </div>
           </div>
         </div>

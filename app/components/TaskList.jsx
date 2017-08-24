@@ -5,9 +5,9 @@ const React = require('react');
 const {connect} = require('react-redux'); // this is the connecting point to react-redux "Provider" seen in app.jsx
 
 // load our components
-const Task = require('Task');
+import Task from 'Task';
 
-const TaskList = React.createClass({
+export const TaskList = React.createClass({
   // build jsx for each task
   renderTasks: function(tasks){
     return tasks.map((task)=>{
@@ -25,7 +25,7 @@ const TaskList = React.createClass({
 });
 
 // we are essentially setting props here to be based on the provider state. state.tasks = props.tasks
-module.exports = connect(
+export default connect(
   (state) => {
     return {
       tasks: state.tasks

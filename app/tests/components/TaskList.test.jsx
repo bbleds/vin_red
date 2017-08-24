@@ -1,12 +1,14 @@
 const React = require('react');
 const ReactDom = require('react-dom');
+const {Provider} = require('react-redux');
 const TestUtils = require('react-addons-test-utils');
 const expect = require('expect');
 const $ = require('jquery');
 
 // load component we are going to test
-const TaskList = require('TaskList');
-const Task = require('Task');
+import ConnectedTaskList, {TaskList} from 'TaskList';
+import ConnectedTask, {Task} from 'Task';
+import {configure} from 'configureStore';
 
 describe('TaskList', () => {
   // Be sure we have our component
@@ -20,17 +22,23 @@ describe('TaskList', () => {
     let tasks = [
       {
         id: 1,
-        test: 'test data one'
+        test: 'test data one',
+        completed: false,
+        dateModified: 500
       },
       {
         id: 2,
-        test: 'test data two'
+        test: 'test data two',
+        completed: false,
+        dateModified: 600
       }
     ];
 
-    let taskList = TestUtils.renderIntoDocument(<TaskList tasks={tasks} />);
-    let taskComponents = TestUtils.scryRenderedComponentsWithType(taskList, Task);
-    
+    let store = configure({tasks:tasks});
+    let provider = TestUtils.renderIntoDocument(<Provider store={store}><ConnectedTaskList /></Provider>);
+    let taskList = TestUtils.scryRenderedComponentsWithType(provider, ConnectedTaskList)[0];
+    let taskComponents = TestUtils.scryRenderedComponentsWithType(taskList, ConnectedTask);
+
     expect(taskComponents.length).toBe(tasks.length);
 
   });
