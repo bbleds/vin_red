@@ -19,9 +19,10 @@ export let addTask = (text) => {
 }
 
 // action generator for showing completed tasks
-export let toggleCompletedTasks = () => {
+export let toggleCompletedTasks = (show) => {
   return {
-    type: "TOGGLE_COMPLETED_TASKS"
+    type: "TOGGLE_COMPLETED_TASKS",
+    show: show
   }
 }
 

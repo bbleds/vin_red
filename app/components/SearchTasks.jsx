@@ -8,7 +8,7 @@ const SearchTasks = React.createClass({
     let searchValue = this.refs.searchInput.value;
     let showCompletedTasks = this.refs.showCompleted.checked;
     this.props.dispatch(actions.setSearchText(searchValue));
-    this.props.dispatch(actions.toggleCompletedTasks());
+    this.props.dispatch(actions.toggleCompletedTasks(this.refs.showCompleted.checked));
 
   },
   render: function(){
