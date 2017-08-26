@@ -27,4 +27,4 @@ const SearchTasks = React.createClass({
   }
 });
 
-module.exports = connect()(SearchTasks);
+export default module.exports = connect()(SearchTasks);

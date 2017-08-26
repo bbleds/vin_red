@@ -5,7 +5,10 @@ const expect = require('expect');
 const $ = require('jquery');
 
 // load component we are going to test
-const SearchTasks = require('SearchTasks');
+// const SearchTasks = require('SearchTasks');
+import SearchTasks from "SearchTasks";
+import {Provider} from "react-redux";
+import {configure} from "configureStore";
 
 describe('SearchTasks', () => {
   it('Should exist', () =>{
@@ -17,7 +20,7 @@ describe('SearchTasks', () => {
     let spy = expect.createSpy();
 
     // pass in our spy function that should be called
-    let searchTasks = TestUtils.renderIntoDocument(< SearchTasks search={spy} />);
+    let searchTasks = TestUtils.renderIntoDocument(< SearchTasks dispatch={spy} />);
 
     // grab component
     let $elem = $(ReactDOM.findDOMNode(searchTasks));
@@ -29,7 +32,10 @@ describe('SearchTasks', () => {
     TestUtils.Simulate.change(searchTasks.refs.searchInput);
 
     // verify that our method was called with the test text
-    expect(spy).toHaveBeenCalledWith(testText, false);
+    expect(spy).toHaveBeenCalledWith({
+      type : "SET_SEARCH_TEXT",
+      searchText: testText
+    });
   });
 
   it('Should call search prop when "showCompleted" is toggled', () =>{

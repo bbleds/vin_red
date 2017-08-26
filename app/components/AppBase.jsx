@@ -5,7 +5,7 @@ const moment = require('moment');
 
 // load our components
 import TaskList from 'TaskList';
-const AddTask = require('AddTask');
+const {AddTask} = require('AddTask');
 const SearchTasks = require('SearchTasks');
 const TaskApi = require('TaskApi');
 

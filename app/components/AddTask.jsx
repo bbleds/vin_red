@@ -1,8 +1,8 @@
 const React = require('react');
 const actions = require('actions');
-const {connect} = require('react-redux'); // this is the connecting point to react-redux "Provider" seen in app.jsx
+import {connect} from 'react-redux'; // this is the connecting point to react-redux "Provider" seen in app.jsx
 
-const AddTask = React.createClass({
+export const AddTask = React.createClass({
   // this will pass the task to our parent component
   addTask: function(e){
     e.preventDefault();
@@ -25,7 +25,7 @@ const AddTask = React.createClass({
   }
 });
 
-module.exports = connect(
+export default connect(
   (state) => {
     return {
       tasks: state.tasks

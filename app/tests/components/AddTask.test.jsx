@@ -5,50 +5,32 @@ const expect = require('expect');
 const $ = require('jquery');
 
 // load component we are going to test
-const AddTask = require('AddTask');
+// const AddTask = require('AddTask');
+import AddTaskConnected from "AddTask";
+import {Provider} from "react-redux";
+import {configure} from "configureStore";
 
 describe('AddTask', () => {
   it('Should exist', () =>{
-    expect(AddTask).toExist();
+    expect(AddTaskConnected).toExist();
   });
 
-  it('Should call addTask prop with valid data', () =>{
-    let testText = 'test';
-    let spy = expect.createSpy();
+  it('Should render addTask component', () =>{
+    let store = configure();
 
-    // pass in our spy function that should be called
-    let addTask = TestUtils.renderIntoDocument(< AddTask addTask={spy} />);
+    // render the components that we are going to be checking in this
+    let provider = TestUtils.renderIntoDocument(<Provider store={store}><AddTaskConnected/></Provider>);
+    let addTaskComponents = TestUtils.scryRenderedComponentsWithType(provider, AddTaskConnected);
 
-    // grab component
-    let $elem = $(ReactDOM.findDOMNode(addTask));
-
-    // set value of the input
-    addTask.refs.taskInput.value = testText;
-
-    // Simulate a button click on DOM node
-    TestUtils.Simulate.click($elem.find('a')[0]);
-
-    // verify that our method was called with the test text
-    expect(spy).toHaveBeenCalledWith(testText);
+    expect(addTaskComponents.length).toEqual(1);
   });
 
-  it('Should not call addTask prop with invalid data', () =>{
-    let testText = '';
-    let spy = expect.createSpy();
-
-    // pass in our spy function that should be called
-    let addTask = TestUtils.renderIntoDocument(< AddTask addTask={spy} />);
-
-    // grab component
-    let $elem = $(ReactDOM.findDOMNode(addTask));
-
-    // set value of the input
-    addTask.refs.taskInput.value = testText;
-
-    // Simulate a button click on DOM node
-    TestUtils.Simulate.click($elem.find('a')[0]);
-
-    // verify that our method was called with the test text
-    expect(spy).toNotHaveBeenCalled();
-  });
+  // it('Should call ADD_TASK action', () =>{
+  //   let spy = expect.createSpy();
+  //   let addTaskComponent = TestUtils.renderIntoDocument(<AddTaskConnected dispatch={spy}/>);
+  //
+  //   // grab our radio button input
+  //   let $elem = $(ReactDOM.findDOMNode(task)).find('.completed-input')[0];
+  //
+  // });
 });
