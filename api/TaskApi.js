@@ -33,7 +33,7 @@ module.exports = {
   // returns existing tasks based on search term
   filterTasks: function(tasks, showCompleted, searchTerm){
     let filteredTasks = tasks;
-
+    
     // filter by showCompleted and search terms
     filteredTasks = filteredTasks.filter((item)=>{
       if((!item.completed || showCompleted) && item.text.toLowerCase().match(searchTerm.toLowerCase())){

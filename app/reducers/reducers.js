@@ -44,7 +44,7 @@ export let tasksReducer = (state=[], action) => {
           taskCopy.completed = !taskCopy.completed;
           return taskCopy
         }
-        
+
         return task;
       });
     default:

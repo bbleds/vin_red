@@ -6,17 +6,19 @@ const {Provider} = require('react-redux');
 // require core app component
 const AppBase = require('AppBase');
 
+// load in task api
+import TaskApi from 'TaskApi';
+
 // load our store
 const actions = require('actions');
-const store = require('configureStore').configure();
 
-store.subscribe(() => {
-  console.log('new state', store.getState());
+let initialState = {tasks: TaskApi.getTasks()}
+const store = require('configureStore').configure(initialState);
+
+let unsubscribe = store.subscribe(()=>{
+  console.log('tasks are', store.getState());
+  localStorage.setItem('tasks', JSON.stringify(store.getState().tasks));
 });
-
-store.dispatch(actions.setSearchText('testing'));
-store.dispatch(actions.addTask('testing'));
-store.dispatch(actions.toggleCompletedTasks());
 
 // Load foundation
 $(document).foundation();

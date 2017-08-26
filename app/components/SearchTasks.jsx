@@ -5,15 +5,13 @@ const {connect} = require('react-redux'); // this is the connecting point to rea
 const SearchTasks = React.createClass({
   // this will pass the search text for the task to our parent component
   searchTasks: function(){
-
     let searchValue = this.refs.searchInput.value;
     let showCompletedTasks = this.refs.showCompleted.checked;
-
-    return this.props.dispatch(actions.setSearchText(searchValue, showCompletedTasks));
+    this.props.dispatch(actions.setSearchText(searchValue));
+    this.props.dispatch(actions.toggleCompletedTasks());
 
   },
   render: function(){
-
     return (
       <div className="container__header">
         <div className='input-wrapper'>
