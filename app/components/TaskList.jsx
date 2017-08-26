@@ -14,9 +14,11 @@ export const TaskList = React.createClass({
     let state = this.props;
     let tasks = TaskApi.getTasks();
     let filteredTasks = TaskApi.filterTasks(tasks, this.props.showCompletedTasks, this.props.searchText);
-    return filteredTasks.map((task)=>{
+    filteredTasks = filteredTasks.map((task)=>{
       return (<Task key={task.id} taskData={task} />);
     });
+
+    return !(filteredTasks.length) ? (<div className='task-list'><p className="empty">No Current Tasks</p></div>) : filteredTasks;
   },
   render: function(){
     // let taskContent = (!this.props.tasks.length) ? (<div className='task-list'><p className="empty">No Current Tasks</p></div>) : this.renderTasks();

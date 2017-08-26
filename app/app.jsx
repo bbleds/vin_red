@@ -16,7 +16,6 @@ let initialState = {tasks: TaskApi.getTasks()}
 const store = require('configureStore').configure(initialState);
 
 let unsubscribe = store.subscribe(()=>{
-  console.log('tasks are', store.getState());
   localStorage.setItem('tasks', JSON.stringify(store.getState().tasks));
 });
 
