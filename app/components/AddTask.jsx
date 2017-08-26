@@ -15,7 +15,6 @@ export const AddTask = React.createClass({
     (valid) ? (this.props.dispatch(actions.addTask(value)), this.refs.taskInput.value="") : this.refs.taskInput.focus();
   },
   render: function(){
-
     return (
       <div className="container__footer">
         <input type='text' ref="taskInput" placeholder='Task' />
