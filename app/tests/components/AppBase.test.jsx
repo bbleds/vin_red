@@ -14,7 +14,7 @@ const actions = require('actions');
 const AppBase = require('AppBase');
 import TaskList from 'TaskList';
 const SearchTasks = require('SearchTasks');
-const AddTask = require('AddTask');
+const {AddTask} = require('AddTask');
 
 describe('AppBase', () => {
   it('Should exist', () =>{
