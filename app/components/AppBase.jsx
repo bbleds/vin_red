@@ -10,21 +10,6 @@ import SearchTasks from "SearchTasks";
 import TaskApi from 'TaskApi';
 
 const AppBase = React.createClass({
-  getInitialState: () => {
-    // get existing tasks
-    let tasks = TaskApi.getTasks();
-
-    // set our inital app state
-    return {
-      tasks: tasks,
-      showCompletedTasks: false,
-      searchText: ""
-    }
-  },
-  componentDidUpdate: function(){
-    // store existing tasks
-    TaskApi.setTasks(this.state.tasks);
-  },
   render: function(){
 
     return (
