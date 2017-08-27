@@ -17,29 +17,13 @@ describe('TaskList', () => {
   });
 
   // Check that rendering is successful for each task passed in
-  it('Should render one task component for each task', () =>{
+  it('Should render taskList component', () =>{
 
-    let tasks = [
-      {
-        id: 1,
-        test: 'test data one',
-        completed: false,
-        dateModified: 500
-      },
-      {
-        id: 2,
-        test: 'test data two',
-        completed: false,
-        dateModified: 600
-      }
-    ];
-
-    let store = configure({tasks:tasks});
+    let store = configure();
     let provider = TestUtils.renderIntoDocument(<Provider store={store}><ConnectedTaskList /></Provider>);
-    let taskList = TestUtils.scryRenderedComponentsWithType(provider, ConnectedTaskList)[0];
-    let taskComponents = TestUtils.scryRenderedComponentsWithType(taskList, ConnectedTask);
 
-    expect(taskComponents.length).toBe(tasks.length);
+    // be sure that we have our TaskList
+    expect(TestUtils.scryRenderedComponentsWithType(provider, ConnectedTaskList).length).toBe(1);
 
   });
 });

@@ -6,7 +6,7 @@ const moment = require('moment');
 // load our components
 import TaskList from 'TaskList';
 import AddTask from 'AddTask';
-const SearchTasks = require('SearchTasks');
+import SearchTasks from "SearchTasks";
 const TaskApi = require('TaskApi');
 
 const AppBase = React.createClass({

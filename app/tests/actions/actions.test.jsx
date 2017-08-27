@@ -30,10 +30,11 @@ describe('App actions', ()=>{
   describe('Completed task actions', ()=>{
     it('Should generate an TOGGLE_COMPLETED_TASKS action', () => {
       let action = {
-        type: "TOGGLE_COMPLETED_TASKS"
+        type: "TOGGLE_COMPLETED_TASKS",
+        show: false
       };
 
-      let actionResp = actions.toggleCompletedTasks();
+      let actionResp = actions.toggleCompletedTasks(false);
       expect(actionResp).toEqual(action);
     });
 

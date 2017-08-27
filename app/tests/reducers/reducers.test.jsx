@@ -22,7 +22,8 @@ describe("Reducers", () => {
   describe("Show completed reducer", () => {
     it('Should toggle showCompletedTasks boolean', () => {
       let action = {
-        type: 'TOGGLE_COMPLETED_TASKS'
+        type: 'TOGGLE_COMPLETED_TASKS',
+        show: true
       };
       let resp = reducers.showCompletedReducer(freeze(false), freeze(action));
       expect(resp).toEqual(true);

@@ -6,7 +6,7 @@ const $ = require('jquery');
 
 // load component we are going to test
 // const SearchTasks = require('SearchTasks');
-import SearchTasks from "SearchTasks";
+import {SearchTasks} from "SearchTasks";
 import {Provider} from "react-redux";
 import {configure} from "configureStore";
 
@@ -38,11 +38,11 @@ describe('SearchTasks', () => {
     });
   });
 
-  it('Should call search prop when "showCompleted" is toggled', () =>{
+  it('Should call toggle completed tasks action when "show completed" checkbox is changed', () =>{
     let spy = expect.createSpy();
 
     // pass in our spy function that should be called
-    let searchTasks = TestUtils.renderIntoDocument(< SearchTasks search={spy} />);
+    let searchTasks = TestUtils.renderIntoDocument(< SearchTasks dispatch={spy} />);
 
     // grab component
     let $elem = $(ReactDOM.findDOMNode(searchTasks));
@@ -53,8 +53,11 @@ describe('SearchTasks', () => {
     // Simulate a change on DOM node
     TestUtils.Simulate.change(searchTasks.refs.showCompleted);
 
-    // verify that our method was called with the test text
-    expect(spy).toHaveBeenCalledWith('', true);
+    // verify that our action
+    expect(spy).toHaveBeenCalledWith({
+      type: "TOGGLE_COMPLETED_TASKS",
+      show: true
+    });
   });
 
 });

@@ -2,7 +2,7 @@ const React = require('react');
 const actions = require('actions');
 const {connect} = require('react-redux'); // this is the connecting point to react-redux "Provider" seen in app.jsx
 
-const SearchTasks = React.createClass({
+export const SearchTasks = React.createClass({
   // this will pass the search text for the task to our parent component
   searchTasks: function(){
     let searchValue = this.refs.searchInput.value;
@@ -25,4 +25,4 @@ const SearchTasks = React.createClass({
   }
 });
 
-export default module.exports = connect()(SearchTasks);
+export default connect()(SearchTasks);

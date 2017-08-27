@@ -12,8 +12,8 @@ const actions = require('actions');
 
 // load component we are going to test
 const AppBase = require('AppBase');
-import TaskList from 'TaskList';
-const SearchTasks = require('SearchTasks');
+import {TaskList} from 'TaskList';
+import SearchTasks from 'SearchTasks'
 const {AddTask} = require('AddTask');
 
 describe('AppBase', () => {
@@ -32,7 +32,7 @@ describe('AppBase', () => {
     let appBase = TestUtils.scryRenderedComponentsWithType(provider, AppBase)[0];
     let taskList = TestUtils.scryRenderedComponentsWithType(appBase, TaskList);
 
-    expect(taskList.length).toEqual(0);
+    expect(taskList.length).toEqual(1);
   });
 
   it('Should render searchTask component',() => {
