@@ -1,7 +1,7 @@
-const React = require('react');
-const {connect} = require('react-redux');
-const moment = require('moment');
-const actions = require('actions');
+import React from 'react';
+import {connect} from 'react-redux';
+import moment from 'moment';
+import actions from 'actions';
 
 export const Task = React.createClass({
   // this method will pass the completed tasks to app component

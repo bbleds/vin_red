@@ -1,7 +1,7 @@
 const redux = require('redux');
 
 // load in reducers
-const {searchTextReducer, showCompletedReducer, tasksReducer} = require('reducers');
+import {searchTextReducer, showCompletedReducer, tasksReducer} from 'reducers';
 
 export let configure = (initialState={}) => {
   // make our final reducer from combining all previous reducers

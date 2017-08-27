@@ -1,6 +1,5 @@
-const uuid = require('node-uuid');
-const moment = require('moment');
-
+import uuid from 'node-uuid';
+import moment from 'moment';
 
 // action generator for searching tasks
 export let setSearchText = (searchText) => {
@@ -32,4 +31,11 @@ export let toggleTask = (taskId) => {
     type: "TOGGLE_TASK",
     taskId: taskId
   }
+}
+
+export default {
+  addTask: addTask,
+  setSearchText: setSearchText,
+  toggleCompletedTasks: toggleCompletedTasks,
+  toggleTask: toggleTask
 }

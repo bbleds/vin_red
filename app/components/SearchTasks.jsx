@@ -1,6 +1,7 @@
-const React = require('react');
-const actions = require('actions');
-const {connect} = require('react-redux'); // this is the connecting point to react-redux "Provider" seen in app.jsx
+
+import React from 'react';
+import actions from 'actions';
+import {connect} from 'react-redux'; // this is the connecting point to react-redux "Provider" seen in app.jsx
 
 export const SearchTasks = React.createClass({
   // this will pass the search text for the task to our parent component

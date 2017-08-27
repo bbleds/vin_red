@@ -1,5 +1,5 @@
-const React = require('react');
-const actions = require('actions');
+import React from 'react';
+import actions from 'actions';
 import {connect} from 'react-redux'; // this is the connecting point to react-redux "Provider" seen in app.jsx
 
 export const AddTask = React.createClass({

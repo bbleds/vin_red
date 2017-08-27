@@ -1,8 +1,6 @@
-//  This component will build our task list
-
 // load 3rd party deps
-const React = require('react');
-const {connect} = require('react-redux'); // this is the connecting point to react-redux "Provider" seen in app.jsx
+import React from 'react';
+import {connect} from 'react-redux'; // this is the connecting point to react-redux "Provider" seen in app.jsx
 import TaskApi from 'TaskApi';
 
 // load our components

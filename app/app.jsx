@@ -1,19 +1,16 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const {Route, Router, IndexRoute, hashHistory} = require('react-router');
-const {Provider} = require('react-redux');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Route, Router, IndexRoute, hashHistory} from 'react-router';
+import {Provider} from 'react-redux';
 
-// require core app component
-const AppBase = require('AppBase');
-
-// load in task api
+// load custom modules and components
+import AppBase from 'AppBase';
 import TaskApi from 'TaskApi';
-
-// load our store
-const actions = require('actions');
+import actions from 'actions';
+import {configure} from 'configureStore';
 
 let initialState = {tasks: TaskApi.getTasks()}
-const store = require('configureStore').configure(initialState);
+const store = configure(initialState);
 
 let unsubscribe = store.subscribe(()=>{
   localStorage.setItem('tasks', JSON.stringify(store.getState().tasks));

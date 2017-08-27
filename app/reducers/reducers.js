@@ -1,6 +1,6 @@
-const uuid = require('node-uuid');
-const moment = require('moment');
-const actions = require('actions');
+import uuid from 'node-uuid';
+import moment from 'moment';
+import actions from 'actions';
 
 // handle search text properties
 export let searchTextReducer = (state = '', action) => {
