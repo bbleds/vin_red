@@ -13,7 +13,8 @@ let initialState = {tasks: TaskApi.getTasks()}
 const store = configure(initialState);
 
 let unsubscribe = store.subscribe(()=>{
-  localStorage.setItem('tasks', JSON.stringify(store.getState().tasks));
+  // when tasks are updated, we should store them on localStorage
+  TaskApi.setTasks(store.getState().tasks);
 });
 
 // Load foundation
