@@ -7,7 +7,6 @@ import moment from 'moment';
 import TaskList from 'TaskList';
 import AddTask from 'AddTask';
 import SearchTasks from "SearchTasks";
-import TaskApi from 'TaskApi';
 
 const AppBase = React.createClass({
   render: function(){
