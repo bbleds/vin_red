@@ -1,4 +1,4 @@
-const redux = require('redux');
+import * as redux from 'redux';
 
 // load in reducers
 import {searchTextReducer, showCompletedReducer, tasksReducer} from 'reducers';

@@ -1,5 +1,7 @@
 import uuid from 'node-uuid';
 import moment from 'moment';
+import firebase from 'app/firebase/index';
+
 
 // action generator for searching tasks
 export let setSearchText = (searchText) => {
@@ -11,9 +13,17 @@ export let setSearchText = (searchText) => {
 
 // action generator for adding tasks
 export let addTask = (text) => {
+  let ref = firebase.database().ref();
+
+  console.log('got ref');
   return {
     type: "ADD_TASK",
-    text: text
+    task: {
+      id : uuid(),
+      text: text,
+      completed: false,
+      dateModified: moment().unix()
+    }
   }
 }
 

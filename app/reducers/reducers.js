@@ -29,12 +29,7 @@ export let tasksReducer = (state=[], action) => {
     case "ADD_TASK":
       return [
         ...state,
-        {
-          id : uuid(),
-          text: action.text,
-          completed: false,
-          dateModified: moment().unix()
-        }
+        action.task
       ];
     // When a task is toggled complete
     case "TOGGLE_TASK":

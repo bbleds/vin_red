@@ -8,6 +8,8 @@ import AppBase from 'AppBase';
 import TaskApi from 'TaskApi';
 import actions from 'actions';
 import {configure} from 'configureStore';
+import '../playground/firebase/index';
+
 
 let initialState = {tasks: TaskApi.getTasks()}
 const store = configure(initialState);
