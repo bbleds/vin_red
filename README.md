@@ -1,4 +1,4 @@
-# vin_red
+# React Tasks
 
 A simple task manager built with React, Redux, and Webpack
 
